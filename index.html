@@ -1142,4 +1142,12 @@
           '': '',
           'mattias.rutkowski@ahoo.se':     'Mattias',
           'bengthirvonen@hotmail.com':     'Benke',
-     
+        };
+        const email = data.session.user.email.toLowerCase();
+        const name = nameMap[email] || email.split('@')[0];
+        document.getElementById("welcome-name").textContent = "Välkommen hem, " + name + " 🌲";
+      }
+    });
+  </script>
+</body>
+</html>
