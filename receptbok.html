@@ -125,6 +125,9 @@
     .cat-dessert   { background: rgba(220,100,150,0.15); color: #8a2050; }
     .cat-övrigt    { background: rgba(100,100,100,0.12); color: #444; }
     .recipe-author { font-size: 0.72rem; color: #aaa; }
+    .heart-btn { background: none; border: none; cursor: pointer; font-size: 0.82rem; color: #ccc; padding: 0.15rem 0.35rem; border-radius: 6px; transition: all 0.15s; line-height: 1; white-space: nowrap; }
+    .heart-btn:hover { color: #e0335a; transform: scale(1.15); }
+    .heart-btn.big { font-size: 1rem; color: #bbb; margin-top: 0.3rem; }
 
     /* ── EMPTY ── */
     .empty-state { grid-column: 1/-1; text-align: center; padding: 4rem; color: #aaa; }
@@ -431,7 +434,10 @@ function addPrivateNavLinks(email) {
             ${r.description ? `<p>${r.description}</p>` : ''}
             <div class="recipe-footer">
               <span class="recipe-cat cat-${r.category}">${CAT_EMOJIS[r.category]||''} ${r.category}</span>
-              <span class="recipe-author">${r.author_emoji||''} ${r.author_name||'Familjen'}</span>
+              <span style="display:flex;align-items:center;gap:0.4rem;">
+                <span class="recipe-author">${r.author_emoji||''} ${r.author_name||'Familjen'}</span>
+                <button class="heart-btn" onclick="likeRecept('${r.id}', event)">❤️ ${r.hearts||0}</button>
+              </span>
             </div>
           </div>
         </div>
@@ -470,7 +476,8 @@ function addPrivateNavLinks(email) {
             <div class="recipe-section-title">Tillagnng</div>
             <div class="instructions-text">${r.instructions}</div>
           ` : ''}
-          <div style="display:flex;gap:0.6rem;margin-top:1.5rem;flex-wrap:wrap;">
+          <div style="display:flex;gap:0.6rem;margin-top:1.5rem;flex-wrap:wrap;align-items:center;">
+            <button class="heart-btn big" id="modal-heart-${r.id}" onclick="likeRecept('${r.id}', event)">❤️ ${r.hearts||0}</button>
             <button class="modal-edit" style="flex:1;" onclick="openEditModal('${r.id}')">✏️ Redigera</button>
             <button class="modal-delete" style="flex:1;background:none;border:1px solid rgba(168,76,42,0.3);color:var(--terra);" onclick="deleteRecept('${r.id}')">Ta bort</button>
           </div>
@@ -611,6 +618,19 @@ function addPrivateNavLinks(email) {
       document.querySelectorAll('#rAuthorChips .author-chip').forEach(c => c.classList.remove('selected'));
       uploadedPhotoUrl = null;
       selectedAuthor = null;
+    }
+
+    async function likeRecept(id, event) {
+      if (event) event.stopPropagation();
+      const r = allRecipes.find(x => x.id === id);
+      if (!r) return;
+      const newCount = (r.hearts || 0) + 1;
+      await sb.from('recept').update({ hearts: newCount }).eq('id', id);
+      r.hearts = newCount;
+      renderGrid();
+      // Uppdatera modal-knappen om den är öppen
+      const mb = document.getElementById('modal-heart-' + id);
+      if (mb) mb.textContent = '❤️ ' + newCount;
     }
 
     function toggleNav() {

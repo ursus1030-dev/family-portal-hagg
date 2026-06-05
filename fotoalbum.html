@@ -88,6 +88,9 @@
     #lbPrev { left: 1.5rem; } #lbNext { right: 1.5rem; }
     .lb-delete { margin-top: 0.6rem; background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.45); font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
     .lb-delete:hover { border-color: rgba(255,80,80,0.5); color: rgba(255,80,80,0.8); }
+    .lb-heart { margin-top: 0.6rem; margin-right: 0.4rem; background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-size: 0.85rem; padding: 0.3rem 0.9rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+    .lb-heart:hover { border-color: rgba(255,80,120,0.6); color: #ff6090; transform: scale(1.1); }
+    .photo-hearts { position: absolute; bottom: 0.5rem; right: 0.5rem; background: rgba(0,0,0,0.55); color: white; font-size: 0.72rem; padding: 0.15rem 0.45rem; border-radius: 10px; pointer-events: none; }
 
     .empty-state { text-align: center; padding: 4rem 2rem; color: #aaa; }
     .empty-state .icon { font-size: 3.5rem; margin-bottom: 1rem; }
@@ -198,6 +201,7 @@
         <span id="lbTitle"></span>
         <small id="lbMeta"></small>
       </div>
+      <button class="lb-heart" id="lbHeart" onclick="likePhoto()">❤️ <span id="lbHeartCount">0</span></button>
       <button class="lb-delete" id="lbDelete">🗑 Ta bort</button>
     </div>
     <button class="lb-nav" id="lbNext">›</button>
@@ -330,6 +334,7 @@ function addPrivateNavLinks(email) {
               <span>${esc(p.skapad_av || '')} · ${new Date(p.created_at).toLocaleDateString('sv-SE')}</span>
             </div>
           </div>
+          ${(p.hearts||0) > 0 ? `<div class="photo-hearts">❤️ ${p.hearts}</div>` : ''}
         </div>`).join('');
     }
 
@@ -359,6 +364,8 @@ function addPrivateNavLinks(email) {
       document.getElementById('lbTitle').textContent = p.titel || p.album || '';
       document.getElementById('lbMeta').textContent = ` · ${p.skapad_av || ''} · ${new Date(p.created_at).toLocaleDateString('sv-SE')}`;
       document.getElementById('lbDelete').dataset.id = p.id;
+      document.getElementById('lbHeart').dataset.id = p.id;
+      document.getElementById('lbHeartCount').textContent = p.hearts || 0;
       document.getElementById('lightbox').classList.add('open');
     }
 
@@ -468,6 +475,17 @@ function addPrivateNavLinks(email) {
       document.getElementById('fAlbumName').value = '';
     };
   
+    async function likePhoto() {
+      const id = document.getElementById('lbHeart').dataset.id;
+      const p = allPhotos.find(x => x.id === id);
+      if (!p) return;
+      const newCount = (p.hearts || 0) + 1;
+      await sb.from('foton').update({ hearts: newCount }).eq('id', id);
+      p.hearts = newCount;
+      document.getElementById('lbHeartCount').textContent = newCount;
+      renderPhotos();
+    }
+
     function toggleNav() {
       const nl = document.getElementById('navLinks');
       nl.classList.toggle('open');
