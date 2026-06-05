@@ -394,13 +394,13 @@ function addPrivateNavLinks(email) {
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
     const MEMBERS = [
-      { name: 'Peter', emoji: '👨' },
-      { name: 'Carina', emoji: '👩' },
-      { name: 'Elias', emoji: '🧑' },
-      { name: 'Tora', emoji: '👧' },
-      { name: 'Mattias', emoji: '🧔' },
-      { name: 'Alva', emoji: '👱‍♀️' },
-      { name: 'Isak', emoji: '🧑‍🦱' },
+      { name:'Familjemedlem 1', emoji: '👨' },
+      { name:'Familjemedlem 2', emoji: '👩' },
+      { name:'Familjemedlem 3', emoji: '🧑' },
+      { name:'Familjemedlem 4', emoji: '👧' },
+      { name:'Familjemedlem 5', emoji: '🧔' },
+      { name:'Familjemedlem 6', emoji: '👱‍♀️' },
+      { name:'Familjemedlem 7', emoji: '🧑‍🦱' },
       { name: 'Jenna', emoji: '👶' },
       { name: 'Svea', emoji: '👶' },
     ];
@@ -647,8 +647,6 @@ function addPrivateNavLinks(email) {
       renderCalendar();
     }
 
-    init();
-  
     function toggleNav() {
       const nl = document.getElementById('navLinks');
       nl.classList.toggle('open');
@@ -675,4 +673,4 @@ function addPrivateNavLinks(email) {
             b.innerHTML = "✨ Sajten har uppdaterats! <button onclick='location.reload(true)' style='background:#fff;color:#3d5c3a;border:none;padding:0.35rem 0.9rem;border-radius:6px;cursor:pointer;font-weight:600;font-family:Jost,sans-serif;'>Ladda om</button>";
             document.body.appendChild(b);
           }
-        }            
+        }                                
