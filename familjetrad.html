@@ -293,7 +293,7 @@ function addPrivateNavLinks(email) {
       loadNotes();
     });
 
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+    function logOut() { window.location.href = 'logout.html'; }
 
     async function loadNotes() {
       const { data } = await sb.from('slakt_noter').select('*').order('fodd', { ascending: true, nullsFirst: false });

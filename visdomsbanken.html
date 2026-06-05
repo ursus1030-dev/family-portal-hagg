@@ -373,10 +373,7 @@ function addPrivateNavLinks(email) {
       return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    async function logOut() {
-      await sb.auth.signOut();
-      window.location.href = 'login.html?logout=1';
-    }
+    function logOut() { window.location.href = 'logout.html'; }
 
     async function init() {
       const { data } = await sb.auth.getSession();

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flödet — Familjen Almström</title>
+  <title>Flödet — Din familjesajt</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -156,7 +156,7 @@
 <body>
 
 <nav>
-  <a class="nav-brand" href="index.html">Familjen Almström</a>
+  <a class="nav-brand" href="index.html">Familjesajten</a>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Hem</a>
     <a href="dagbok.html">Dagbok</a>
@@ -392,10 +392,7 @@
     return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  async function logOut() {
-    await sb.auth.signOut();
-    window.location.href = 'login.html';
-  }
+  function logOut() { window.location.href = 'logout.html'; }
 
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
@@ -424,4 +421,3 @@
   </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 

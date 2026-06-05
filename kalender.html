@@ -419,10 +419,7 @@ function addPrivateNavLinks(email) {
       init();
     });
 
-    async function logOut() {
-      await sb.auth.signOut();
-      window.location.href = 'login.html';
-    }
+    function logOut() { window.location.href = 'logout.html'; }
 
     // ── INIT ──
     async function init() {
@@ -673,4 +670,9 @@ function addPrivateNavLinks(email) {
             b.innerHTML = "✨ Sajten har uppdaterats! <button onclick='location.reload(true)' style='background:#fff;color:#3d5c3a;border:none;padding:0.35rem 0.9rem;border-radius:6px;cursor:pointer;font-weight:600;font-family:Jost,sans-serif;'>Ladda om</button>";
             document.body.appendChild(b);
           }
-        }                                
+        });
+      }, 60000);
+    })();
+  </script>
+</body>
+</html>

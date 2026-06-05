@@ -248,7 +248,7 @@ function addPrivateNavLinks(email) {
       loadBooks();
     });
 
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
+    function logOut() { window.location.href = 'logout.html'; }
 
     async function loadBooks() {
       const { data } = await sb.from('boktips').select('*').order('created_at', { ascending: false });

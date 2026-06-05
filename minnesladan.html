@@ -311,7 +311,7 @@ function addPrivateNavLinks(email) {
       addPrivateNavLinks((data.session||data?.session).user.email.toLowerCase());
       init();
     });
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
+    function logOut() { window.location.href = 'logout.html'; }
 
     async function init() {
       document.getElementById('upYear').value = new Date().getFullYear();

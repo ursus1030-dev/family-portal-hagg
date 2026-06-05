@@ -247,7 +247,7 @@ function addPrivateNavLinks(email) {
       document.getElementById('capOpenDate').value = d.toISOString().split('T')[0];
       loadCapsules();
     });
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
+    function logOut() { window.location.href = 'logout.html'; }
 
     function switchTab(id, btn) {
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));

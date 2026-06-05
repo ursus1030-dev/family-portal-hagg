@@ -918,7 +918,7 @@
     });
 
 
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
+    function logOut() { window.location.href = 'logout.html'; }
 
     function toggleNav() {
       const nl = document.getElementById('navLinks');

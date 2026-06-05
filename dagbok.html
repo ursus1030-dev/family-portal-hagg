@@ -848,10 +848,7 @@ function addPrivateNavLinks(email) {
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
     /* ─── LOGOUT ─── */
-    async function logOut() {
-      await sb.auth.signOut();
-      window.location.href = 'login.html?logout=1';
-    }
+    function logOut() { window.location.href = 'logout.html'; }
 
     /* ─── REALTID ─── */
     function subscribeRealtime() {

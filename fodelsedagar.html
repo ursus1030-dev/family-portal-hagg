@@ -259,7 +259,7 @@
         document.addEventListener('click', () => wrap.classList.remove('open'));
       }
     }
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
+    function logOut() { window.location.href = 'logout.html'; }
     function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
 
     // Födelsedagdata — samkör Peter & Isak (samma dag)
