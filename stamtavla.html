@@ -606,126 +606,73 @@ function addPrivateNavLinks(email) {
     const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2d3Zla2xzbnRuZm1zYmxwY2dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MTI2MzgsImV4cCI6MjA5NjE4ODYzOH0.KXbe5Ji6M5dr_43NUAvI-RjWWRtvie2tVortExpNaDY';
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-    /* ── FAMILJEDATA ── */
+    /* ── FAMILJEDATA — fyll i er egen familj här ── */
     const PEOPLE = {
       peter: {
-        initials: 'PA', avClass: 'av-forest',
-        name: 'Peter Almström', role: 'Familjens admin & pappa',
+        initials: '?', avClass: 'av-forest',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '🌲',
-        facts: [
-          { label: 'Ålder', val: '52 år' },
-          { label: 'Roll', val: 'Admin' },
-          { label: 'E-post', val: '' },
-          { label: 'Husdjur', val: '🐕 Tyce (Leonberger, 3 år)' },
-          { label: 'Lösenord', val: 'Familjen2026' },
-        ]
+        facts: []
       },
       carina: {
-        initials: 'CA', avClass: 'av-terra',
-        name: 'Carina Almström', role: 'Mamma',
+        initials: '?', avClass: 'av-terra',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '🌸',
-        facts: [
-          { label: 'Ålder', val: '50 år' },
-          { label: 'Hemma', val: 'Bor med Peter & Elias' },
-          { label: 'Husdjur', val: '🐕 Tyce' },
-        ]
+        facts: []
       },
       elias: {
-        initials: 'EA', avClass: 'av-forest',
-        name: 'Elias Almström', role: 'Son',
-        emoji: '🎮',
-        facts: [
-          { label: 'Ålder', val: '20 år' },
-          { label: 'Nästa steg', val: 'Snart till universitetet' },
-          { label: 'Föräldrar', val: 'Peter & Carina' },
-        ]
+        initials: '?', avClass: 'av-forest',
+        name: 'Familjemedlem', role: 'Fyll i roll',
+        emoji: '😊',
+        facts: []
       },
       tora: {
-        initials: 'TR', avClass: 'av-terra',
-        name: 'Tora Rutkowski', role: 'Dotter & admin',
+        initials: '?', avClass: 'av-terra',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '☀️',
-        facts: [
-          { label: 'Ålder', val: '29 år' },
-          { label: 'Roll', val: 'Admin' },
-          { label: 'Partner', val: 'Mattias Rutkowski' },
-          { label: 'Barn', val: 'Jenna (3 månader) 👶' },
-          { label: 'Husdjur', val: '🐾 Darcy (Fransk bulldog, 5 år)' },
-        ]
+        facts: []
       },
       mattias: {
-        initials: 'MR', avClass: 'av-bark',
-        name: 'Mattias Rutkowski', role: 'Svärson',
+        initials: '?', avClass: 'av-bark',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '🔧',
-        facts: [
-          { label: 'Ålder', val: '36 år' },
-          { label: 'Partner', val: 'Tora Rutkowski' },
-          { label: 'Barn', val: 'Jenna 👶' },
-          { label: 'Husdjur', val: '🐾 Darcy' },
-        ]
+        facts: []
       },
       alva: {
-        initials: 'AD', avClass: 'av-terra',
-        name: 'Alva Almström Demervik', role: 'Dotter',
+        initials: '?', avClass: 'av-terra',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '🎨',
-        facts: [
-          { label: 'Ålder', val: '26 år' },
-          { label: 'Partner', val: 'Isak Almström Demervik' },
-          { label: 'Barn', val: 'Svea (2,5 år) & Sigrid (3 v) 👶' },
-          { label: 'Husdjur', val: '🐕 Truls (Springer spaniel, 5 år)' },
-        ]
+        facts: []
       },
       isak: {
-        initials: 'ID', avClass: 'av-forest',
-        name: 'Isak Almström Demervik', role: 'Svärson',
+        initials: '?', avClass: 'av-forest',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '⚡',
-        facts: [
-          { label: 'Ålder', val: '27 år' },
-          { label: 'Partner', val: 'Alva Almström Demervik' },
-          { label: 'Barn', val: 'Svea & Sigrid 👶' },
-          { label: 'Husdjur', val: '🐕 Truls' },
-        ]
+        facts: []
       },
       jenna: {
-        initials: '👶', avClass: 'av-baby',
-        name: 'Jenna Rutkowski', role: 'Barnbarn · Toras dotter',
+        initials: '?', avClass: 'av-baby',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '🍼',
-        facts: [
-          { label: 'Ålder', val: '3 månader' },
-          { label: 'Föräldrar', val: 'Tora & Mattias' },
-          { label: 'Farmor/farfar', val: 'Peter & Carina' },
-        ]
+        facts: []
       },
       svea: {
-        initials: 'Sv', avClass: 'av-toddler',
-        name: 'Svea', role: 'Barnbarn · Storasyster',
+        initials: '?', avClass: 'av-toddler',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '🌼',
-        facts: [
-          { label: 'Ålder', val: '2,5 år' },
-          { label: 'Föräldrar', val: 'Alva & Isak' },
-          { label: 'Lillasyster', val: 'Sigrid (3 veckor) 👶' },
-          { label: 'Farmor/farfar', val: 'Peter & Carina' },
-        ]
+        facts: []
       },
       sigrid: {
-        initials: '👶', avClass: 'av-baby',
-        name: 'Sigrid', role: 'Barnbarn · Nyfödd',
+        initials: '?', avClass: 'av-baby',
+        name: 'Familjemedlem', role: 'Fyll i roll',
         emoji: '🍼',
-        facts: [
-          { label: 'Ålder', val: '3 veckor' },
-          { label: 'Föräldrar', val: 'Alva & Isak' },
-          { label: 'Storasyster', val: 'Svea (2,5 år)' },
-          { label: 'Farmor/farfar', val: 'Peter & Carina' },
-        ]
+        facts: []
       },
       benke: {
-        initials: 'BH', avClass: 'av-gold',
-        name: 'Benke Hirvonen', role: 'Allas farbror — sedan alltid',
-        emoji: '🦌',
-        facts: [
-          { label: 'Ålder', val: '62 år' },
-          { label: 'Roll', val: 'Familjemedlem sedan alltid' },
-          { label: 'Husdjur', val: '🦌 Rådjuret & 🪲 Silverfiskarna' },
-        ]
+        initials: '?', avClass: 'av-gold',
+        name: 'Familjemedlem', role: 'Fyll i roll',
+        emoji: '😄',
+        facts: []
       },
     };
 
