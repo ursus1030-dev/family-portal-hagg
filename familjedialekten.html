@@ -122,7 +122,7 @@
 <body>
 
   <nav>
-    <a class="nav-brand" href="index.html">🌲 Familjen Hägg</a>
+    <a class="nav-brand" href="index.html">🌲 Familjesajten</a>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Meny">&#9776;</button>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Hem</a>
@@ -190,7 +190,7 @@
       <select id="newUpphovsman">
         <option value="">— välj —</option>
         <option>Peter</option><option>Carina</option><option>Elias</option>
-        <option>Tora</option><option>Mattias</option><option>Alva</option><option>Isak</option>
+        <option>Tora</option><option>Mattias</option><option>Alva</option><option>Isak</option><option>Benke</option>
         <option>Familjen</option>
       </select>
       <div class="modal-actions">
@@ -200,7 +200,7 @@
     </div>
   </div>
 
-  <footer><p>Familjen Hägg &nbsp;·&nbsp; Dialekten &nbsp;·&nbsp; 2025</p></footer>
+  <footer><p>Familjen Almström &nbsp;·&nbsp; Dialekten &nbsp;·&nbsp; 2025</p></footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -225,8 +225,8 @@ function addPrivateNavLinks(email) {
     }
 </script>
   <script>
-    const SUPABASE_URL  = 'https://sijidjdonknlxqqljvte.supabase.co';
-    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNpamlkamRvbmtubHhxcWxqdnRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0Mzk5MDMsImV4cCI6MjA5NjAxNTkwM30.ylWEtSJ3xx5gCYkle8o1N-90MoBr1KscWmSwzPnJ2x4';
+    const SUPABASE_URL  = 'https://evwveklsntnfmsblpcgf.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2d3Zla2xzbnRuZm1zYmxwY2dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MTI2MzgsImV4cCI6MjA5NjE4ODYzOH0.KXbe5Ji6M5dr_43NUAvI-RjWWRtvie2tVortExpNaDY';
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
     let allWords    = [];

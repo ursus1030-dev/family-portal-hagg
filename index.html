@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Familjen Hägg</title>
+  <title>Familjen Almström Demervik Rutkowski Hirvonen</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -414,11 +414,13 @@
     }
     .modal-photo {
       aspect-ratio: 1; border-radius: 10px;
-      background: rgba(61,92,58,0.08);
-      border: 1.5px dashed rgba(61,92,58,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; color: rgba(61,92,58,0.3);
+      background: rgba(61,92,58,0.05);
+      border: 1.5px dashed rgba(61,92,58,0.18);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.3rem; color: rgba(61,92,58,0.35);
     }
+    .modal-photo i { font-size: 1.3rem; }
+    .modal-photo span { font-size: 0.62rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500; }
     .modal-melody {
       display: flex; align-items: center; gap: 0.6rem;
       background: rgba(61,92,58,0.06); border-radius: 10px;
@@ -553,7 +555,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-brand" href="index.html">🌲 Familjen Hägg</a>
+    <a class="nav-brand" href="index.html">🌲 Familjesajten</a>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Meny">&#9776;</button>
     <div class="nav-links" id="navLinks">
       <a href="index.html" class="active">Hem</a>
@@ -588,10 +590,25 @@
   <header class="hero">
     <div class="hero-content">
       <div class="hero-icon">🌲</div>
-      <h1>Familjen <em>Hägg</em></h1>
+      <h1>Familjen <em>Almström Demervik Rutkowski Hirvonen</em></h1>
       <p class="hero-sub">Vår privata plats på nätet</p>
       <div class="hero-stats">
-        <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl">Familjemedlemmar</span></div>
+        <div class="stat-item">
+          <span class="stat-num">13</span>
+          <span class="stat-lbl">Familjemedlemmar</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">4</span>
+          <span class="stat-lbl">Husdjur</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2</span>
+          <span class="stat-lbl">Nyfödda 2025</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-lbl">Hem</span>
+        </div>
       </div>
     </div>
   </header>
@@ -621,24 +638,158 @@
 
   <div class="units-grid">
 
+    <!-- ── PETER & CARINA ── -->
     <div class="unit-card">
-      <div class="unit-header"><div class="unit-emoji">👤</div><div class="unit-title"><h3>Familjemedlem 1</h3><span>Lägg till beskrivning</span></div></div>
-      <div class="unit-body"><ul class="members-list"><li class="member-item" onclick="openCard('m1')"><div class="member-avatar">M1</div><div class="member-info"><div class="name">Familjemedlem 1</div><div class="detail">Lägg till info</div></div></li></ul></div>
+      <div class="unit-header">
+        <div class="unit-emoji">🏡</div>
+        <div class="unit-title">
+          <h3>Peter & Carina</h3>
+          <span>Hemma · Stamhuset</span>
+        </div>
+      </div>
+      <div class="unit-body">
+        <ul class="members-list">
+          <li class="member-item" onclick="openCard('peter')">
+            <div class="member-avatar">PA</div>
+            <div class="member-info">
+              <div class="name">Peter Almström</div>
+              <div class="detail">52 år · Admin</div>
+            </div>
+            <span class="member-badge">Admin</span>
+          </li>
+          <li class="member-item" onclick="openCard('carina')">
+            <div class="member-avatar terra">CA</div>
+            <div class="member-info">
+              <div class="name">Carina Almström</div>
+              <div class="detail">50 år</div>
+            </div>
+          </li>
+          <li class="member-item" onclick="openCard('elias')">
+            <div class="member-avatar">EA</div>
+            <div class="member-info">
+              <div class="name">Elias Almström</div>
+              <div class="detail">20 år · Admin</div>
+            </div>
+            <span class="member-badge">Admin</span>
+          </li>
+        </ul>
+        <div class="pets-row">
+          <div class="pet-chip" onclick="openCard('tyce')"><span class="pet-icon">🐕</span> Tyce · Leonberger · 3 år</div>
+        </div>
+      </div>
     </div>
 
+    <!-- ── TORA & MATTIAS ── -->
     <div class="unit-card">
-      <div class="unit-header"><div class="unit-emoji">👤</div><div class="unit-title"><h3>Familjemedlem 2</h3><span>Lägg till beskrivning</span></div></div>
-      <div class="unit-body"><ul class="members-list"><li class="member-item" onclick="openCard('m2')"><div class="member-avatar terra">M2</div><div class="member-info"><div class="name">Familjemedlem 2</div><div class="detail">Lägg till info</div></div></li></ul></div>
+      <div class="unit-header">
+        <div class="unit-emoji">🌸</div>
+        <div class="unit-title">
+          <h3>Tora & Mattias</h3>
+          <span>Familjen Rutkowski</span>
+        </div>
+      </div>
+      <div class="unit-body">
+        <ul class="members-list">
+          <li class="member-item" onclick="openCard('tora')">
+            <div class="member-avatar terra">TR</div>
+            <div class="member-info">
+              <div class="name">Tora Rutkowski</div>
+              <div class="detail">29 år · Admin</div>
+            </div>
+            <span class="member-badge">Admin</span>
+          </li>
+          <li class="member-item" onclick="openCard('mattias')">
+            <div class="member-avatar">MR</div>
+            <div class="member-info">
+              <div class="name">Mattias Rutkowski</div>
+              <div class="detail">36 år</div>
+            </div>
+          </li>
+          <li class="member-item" onclick="openCard('jenna')">
+            <div class="member-avatar" style="background:linear-gradient(135deg,#e8b4c0,#d4899a); color:#4a1a25; font-size:1.1rem;">👶</div>
+            <div class="member-info">
+              <div class="name">Jenna <span class="baby-chip">🍼 3 mån</span></div>
+              <div class="detail">Nyfödda stjärnan</div>
+            </div>
+          </li>
+        </ul>
+        <div class="pets-row">
+          <div class="pet-chip" onclick="openCard('darcy')"><span class="pet-icon">🐾</span> Darcy · Fransk bulldog · 5 år</div>
+        </div>
+      </div>
     </div>
 
+    <!-- ── ALVA & ISAK ── -->
     <div class="unit-card">
-      <div class="unit-header"><div class="unit-emoji">👤</div><div class="unit-title"><h3>Familjemedlem 3</h3><span>Lägg till beskrivning</span></div></div>
-      <div class="unit-body"><ul class="members-list"><li class="member-item" onclick="openCard('m3')"><div class="member-avatar">M3</div><div class="member-info"><div class="name">Familjemedlem 3</div><div class="detail">Lägg till info</div></div></li></ul></div>
+      <div class="unit-header">
+        <div class="unit-emoji">🌿</div>
+        <div class="unit-title">
+          <h3>Alva & Isak</h3>
+          <span>Familjen Almström Demervik</span>
+        </div>
+      </div>
+      <div class="unit-body">
+        <ul class="members-list">
+          <li class="member-item" onclick="openCard('alva')">
+            <div class="member-avatar terra">AD</div>
+            <div class="member-info">
+              <div class="name">Alva Almström Demervik</div>
+              <div class="detail">26 år · Admin</div>
+            </div>
+            <span class="member-badge">Admin</span>
+          </li>
+          <li class="member-item" onclick="openCard('isak')">
+            <div class="member-avatar">ID</div>
+            <div class="member-info">
+              <div class="name">Isak Almström Demervik</div>
+              <div class="detail">27 år</div>
+            </div>
+          </li>
+          <li class="member-item" onclick="openCard('svea')">
+            <div class="member-avatar" style="background:linear-gradient(135deg,#b8d4b0,#8ab88a); color:#1a3a18; font-size:0.85rem;">Sv</div>
+            <div class="member-info">
+              <div class="name">Svea</div>
+              <div class="detail">2,5 år · storasyster</div>
+            </div>
+          </li>
+          <li class="member-item" onclick="openCard('signe')">
+            <div class="member-avatar" style="background:linear-gradient(135deg,#e8b4c0,#d4899a); color:#4a1a25; font-size:1.1rem;">👶</div>
+            <div class="member-info">
+              <div class="name">Signe <span class="baby-chip">🍼 nyfödd</span></div>
+              <div class="detail">Nyaste familjemedlemmen · född 2026</div>
+            </div>
+          </li>
+        </ul>
+        <div class="pets-row">
+          <div class="pet-chip" onclick="openCard('trulls')"><span class="pet-icon">🐕</span> Trulls · Springer spaniel · 5 år</div>
+        </div>
+      </div>
     </div>
 
-    <div class="unit-card">
-      <div class="unit-header"><div class="unit-emoji">👤</div><div class="unit-title"><h3>Familjemedlem 4</h3><span>Lägg till beskrivning</span></div></div>
-      <div class="unit-body"><ul class="members-list"><li class="member-item" onclick="openCard('m4')"><div class="member-avatar terra">M4</div><div class="member-info"><div class="name">Familjemedlem 4</div><div class="detail">Lägg till info</div></div></li></ul></div>
+    <!-- ── BENKE ── -->
+    <div class="unit-card benke">
+      <div class="unit-header">
+        <div class="unit-emoji">🦌</div>
+        <div class="unit-title">
+          <h3>Farbror Benke</h3>
+          <span>Familjemedlem sedan alltid</span>
+        </div>
+      </div>
+      <div class="unit-body">
+        <ul class="members-list">
+          <li class="member-item" onclick="openCard('benke')">
+            <div class="member-avatar" style="background:linear-gradient(135deg,#8B6914,#C9A030);">BH</div>
+            <div class="member-info">
+              <div class="name">Benke Hirvonen</div>
+              <div class="detail">62 år · allas farbror</div>
+            </div>
+          </li>
+        </ul>
+        <div class="pets-row">
+          <div class="pet-chip no-click"><span class="pet-icon">🦌</span> Rådjuret</div>
+          <div class="pet-chip no-click"><span class="pet-icon">🪲</span> Silverfiskarna</div>
+        </div>
+      </div>
     </div>
 
   </div><!-- /units-grid -->
@@ -658,9 +809,9 @@
       <div class="modal-bio" id="mBio"></div>
       <div class="modal-section-title">Foton</div>
       <div class="modal-photos">
-        <div class="modal-photo">📷</div>
-        <div class="modal-photo">📷</div>
-        <div class="modal-photo">📷</div>
+        <div class="modal-photo"><i class="fa-regular fa-image"></i><span>Foto kommer</span></div>
+        <div class="modal-photo"><i class="fa-regular fa-image"></i><span>Foto kommer</span></div>
+        <div class="modal-photo"><i class="fa-regular fa-image"></i><span>Foto kommer</span></div>
       </div>
       <div class="modal-section-title">Favoritlåt</div>
       <div class="modal-melody">
@@ -677,17 +828,65 @@
       <div class="rule"></div>
     </div>
     <div style="border-left:2px solid var(--gold,#C9A96E);padding-left:1.2rem;display:flex;flex-direction:column;gap:1.1rem">
-      <div><div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">2026</div><div style="color:#2a2a2a">Familjen Hägg startar sin familjesajt.</div></div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">3 juni 2026 (kväll)</div>
+        <div style="color:#2a2a2a">Filmklubben lanserad — lägg till filmer med bild, recension och rekommendation. Global JS-bugg fixad i 12 sidor. Dagbok-reaktioner (❤️ 😄) fixade och live.</div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">3 juni 2026</div>
+        <div style="color:#2a2a2a">Mobilnavigation fixad för alla. Peter &amp; Alva och Peter &amp; Elias privata sidor verifierade. Födelsedag-notis återställd. Piloter pausade för att stabilisera sajten ordentligt.</div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">3 juni 2026 (morgon)</div>
+        <div style="color:#2a2a2a">Familjenamnet uppdaterat till Almström Demervik. Inloggningsproblem löst — alla medlemmar kan nu sätta lösenord. Tidslinje tillagd på startsidan. Pilot 1 (Familjen Hägg) påbörjad.</div>
+      </div>
     </div>
+    <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem">
+      <div style="font-size:1.1rem;margin-top:0.1rem">🛠️</div>
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">5 juni 2026</div>
+        <div style="color:#2a2a2a">Resor-sidan fixad. Profilfoton förberedda. Pilotmaterial klart — e-post och onboarding för tre testfamiljer (Hägg, Gibbs, Lomakka).</div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">2 juni 2026</div>
+        <div style="color:#2a2a2a">Nattlig automatisk backup av databasen via GitHub Actions. Födelsedag-sida med nedräkning och fyrverkerier.</div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">1 juni 2026</div>
+        <div style="color:#2a2a2a">Mattias och Isak inbjudna. Uppdateringsnotis-banner. Privata delade fotoalbum för Peter + Tora/Alva/Elias.</div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">31 maj 2026</div>
+        <div style="color:#2a2a2a">Bugfixar och stabilisering. Privata mappar bekräftade — Tora ser Jennas album, Alva ser Svea & Signes.</div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">29 maj 2026</div>
+        <div style="color:#2a2a2a">Hamburger-meny för mobil på alla sidor. Admin-skydd. Familjemedlemmarna inbjudna.</div>
+      </div>
+
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:0.15rem">28 maj 2026</div>
+        <div style="color:#2a2a2a">Sajten startades. 17 sidor skapade: dagbok, receptbok, kalender, quiz, tidskapseln, stamtavla, familjeträd, fotoalbum, kartor, boktips och mer. Flytt till GitHub Pages.</div>
+      </div>
+
+    </div>
+  </div>
 
   <footer>
-    <p>Familjen Hägg &nbsp;·&nbsp; Privat familjesajt &nbsp;·&nbsp; 2025</p>
+    <p>Familjen Almström Demervik Rutkowski Hirvonen &nbsp;·&nbsp; Privat familjesajt &nbsp;·&nbsp; 2025</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    const SUPABASE_URL  = 'https://sijidjdonknlxqqljvte.supabase.co';
-    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNpamlkamRvbmtubHhxcWxqdnRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0Mzk5MDMsImV4cCI6MjA5NjAxNTkwM30.ylWEtSJ3xx5gCYkle8o1N-90MoBr1KscWmSwzPnJ2x4';
+    const SUPABASE_URL  = 'https://evwveklsntnfmsblpcgf.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2d3Zla2xzbnRuZm1zYmxwY2dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MTI2MzgsImV4cCI6MjA5NjE4ODYzOH0.KXbe5Ji6M5dr_43NUAvI-RjWWRtvie2tVortExpNaDY';
 
     // MÅSTE vara innan createClient — Supabase rensar hash/search vid initiering!
     const _initHash   = window.location.hash;
@@ -714,6 +913,17 @@
       addPrivateNavLinks(data.session.user.email.toLowerCase());
     });
 
+
+    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+
+    function toggleNav() {
+      const nl = document.getElementById('navLinks');
+      nl.classList.toggle('open');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const nl = document.getElementById('navLinks');
+      if (nl) nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nl.classList.remove('open')));
+    });
     function addPrivateNavLinks(email) {
       const PETER = 'pealmab@hotmail.com';
       const links = [];
@@ -847,21 +1057,31 @@
     })();
 
     const PERSONS = {
-      m1: { name:'Familjemedlem 1', detail:'Lägg till info', initials:'M1', bg:'linear-gradient(135deg,#3D5C3A,#6a9466)', bio:'Beskriv familjemedlemmen här.', emoji:'👤', melody:'Lägg till favoritlåt…' },
-      m2: { name:'Familjemedlem 2', detail:'Lägg till info', initials:'M2', bg:'linear-gradient(135deg,#A84C2A,#d4855e)', bio:'Beskriv familjemedlemmen här.', emoji:'👤', melody:'Lägg till favoritlåt…' },
-      m3: { name:'Familjemedlem 3', detail:'Lägg till info', initials:'M3', bg:'linear-gradient(135deg,#3D5C3A,#6a9466)', bio:'Beskriv familjemedlemmen här.', emoji:'👤', melody:'Lägg till favoritlåt…' },
-      m4: { name:'Familjemedlem 4', detail:'Lägg till info', initials:'M4', bg:'linear-gradient(135deg,#A84C2A,#d4855e)', bio:'Beskriv familjemedlemmen här.', emoji:'👤', melody:'Lägg till favoritlåt…' },
+      peter:   { name:'Peter Almström',           detail:'52 år · Admin · Stamhuset',       initials:'PA', bg:'linear-gradient(135deg,#3D5C3A,#6a9466)', bio:'Pappan som startade hela familjesajten. Gillar teknik, natur och en god kopp kaffe. Alltid på jakt efter nästa projekt att bygga.', emoji:'🏡', melody:'Lägg till favoritlåt…' },
+      carina:  { name:'Carina Almström',           detail:'50 år · Stamhuset',               initials:'CA', bg:'linear-gradient(135deg,#A84C2A,#d4855e)', bio:'Familjehjärtat som håller ihop allt. Älskar trädgård, matlagning och långa promenader med Tyce.', emoji:'🌸', melody:'Lägg till favoritlåt…' },
+      elias:   { name:'Elias Almström',            detail:'20 år · Admin · Stamhuset',       initials:'EA', bg:'linear-gradient(135deg,#3D5C3A,#6a9466)', bio:'Yngste Almström-killen. Gamer, teknikintresserad och alltid redo för en utmaning.', emoji:'🎮', melody:'Lägg till favoritlåt…' },
+      tora:    { name:'Tora Rutkowski',            detail:'29 år · Admin · Familjen Rutkowski', initials:'TR', bg:'linear-gradient(135deg,#A84C2A,#d4855e)', bio:'Storesyster som blivit mamma. Solig, energisk och fullständigt förälskad i lille Jenna.', emoji:'☀️', melody:'Lägg till favoritlåt…' },
+      mattias: { name:'Mattias Rutkowski',         detail:'36 år · Familjen Rutkowski',      initials:'MR', bg:'linear-gradient(135deg,#3D5C3A,#6a9466)', bio:'Jazzentusiast och nyblivit pappa. Spelar saxofon och gör de bästa frukostsmörgåsarna.', emoji:'🎷', melody:'Lägg till favoritlåt…' },
+      jenna:   { name:'Jenna Rutkowski',           detail:'3 månader · Nyfödda stjärnan',    initials:'👶', bg:'linear-gradient(135deg,#e8b4c0,#d4899a)', bio:'Världens nyaste och gulligaste Rutkowski. Specialistutbildad på att le och sova.', emoji:'🍼', melody:'Byssan lull 🎵' },
+      alva:    { name:'Alva Almström Demervik',    detail:'26 år · Admin · Familjen Almström Demervik', initials:'AD', bg:'linear-gradient(135deg,#A84C2A,#d4855e)', bio:'Storesyster, mamma till Svea och Signe, och numera admin på familjesajten. Kreativ och omtänksam.', emoji:'🌺', melody:'Lägg till favoritlåt…' },
+      isak:    { name:'Isak Almström Demervik',    detail:'27 år · Familjen Almström Demervik', initials:'ID', bg:'linear-gradient(135deg,#3D5C3A,#6a9466)', bio:'Delar födelsedag med Peter (22 juni)! Lugn, pålitlig och otroligt bra pappa till Svea och Signe.', emoji:'⚡', melody:'Lägg till favoritlåt…' },
+      svea:    { name:'Svea Almström Demervik',    detail:'2,5 år · Storasyster',             initials:'Sv', bg:'linear-gradient(135deg,#b8d4b0,#8ab88a)', bio:'Storasyster extraordinaire. Håller ett vakande öga på Signe och älskar att springa i trädgården.', emoji:'🌼', melody:'Imse vimse spindel 🎵' },
+      signe:   { name:'Signe Almström Demervik',   detail:'Nyfödd 2026 · Nyaste familjemedlemmen', initials:'👶', bg:'linear-gradient(135deg,#e8b4c0,#d4899a)', bio:'Välkommen till familjen, Signe! Allt väntar på att bli utforskat.', emoji:'🌟', melody:'Trollmors vaggsång 🎵' },
+      benke:   { name:'Benke Hirvonen',            detail:'62 år · Allas farbror',           initials:'BH', bg:'linear-gradient(135deg,#8B6914,#C9A030)', bio:'Farbror Benke — en fast punkt i familjen sedan alltid. Hemmastadda på alla familjemiddagar och alltid med en god historia.', emoji:'🦌', melody:'Lägg till favoritlåt…' },
+      tyce:    { name:'Tyce',    detail:'Leonberger · 3 år · Peters & Carinas hund',       initials:'🐕', bg:'linear-gradient(135deg,#6B4C35,#a07850)', bio:'Stamhusets store lugne vakt. Tyce är en äkta Leonberger — lika mjuk som ett lejon, lika lojal som en vän. Älskar långa promenader med Carina och att sitta i vägen för alla.', emoji:'🐕', melody:'Hundarnas vals 🎵' },
+      trulls:  { name:'Trulls', detail:'Springer spaniel · 5 år · Alvas & Isaks hund',    initials:'🐾', bg:'linear-gradient(135deg,#4a6741,#7aaa75)', bio:'Familjen Almötm Demerviks energiknippa. Trulls springer snabbare än alla och är alltid först till dörren. Bästa kompisen till Svea på alla utflykter.', emoji:'🐾', melody:'Lägg till favoritlåt…' },
+      darcy:   { name:'Darcy',  detail:'Fransk bulldog · 5 år · Toras & Mattias hund',    initials:'🐶', bg:'linear-gradient(135deg,#A84C2A,#c47050)', bio:'Familjen Rutkowskis lille snarkboll. Darcy är övertygad om att han är mycket större än han ser ut, och tar sin roll som husvakt på fullt allvar.', emoji:'🐶', melody:'Lägg till favoritlåt…' },
     };
 
     function openCard(id) {
       const p = PERSONS[id]; if (!p) return;
-      document.getElementById('mAvatar').innerHTML = p.initials;
+      document.getElementById('mAvatar').innerHTML     = p.initials;
       document.getElementById('mAvatar').style.background = p.bg;
-      document.getElementById('mName').textContent   = p.name;
-      document.getElementById('mDetail').textContent = p.detail;
-      document.getElementById('mBio').textContent    = p.bio;
-      document.getElementById('mEmoji').textContent  = p.emoji;
-      document.getElementById('mMelody').textContent = p.melody;
+      document.getElementById('mName').textContent     = p.name;
+      document.getElementById('mDetail').textContent   = p.detail;
+      document.getElementById('mBio').textContent      = p.bio;
+      document.getElementById('mEmoji').textContent    = p.emoji;
+      document.getElementById('mMelody').textContent   = p.melody;
       document.getElementById('personModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -874,19 +1094,53 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCard(); });
 
-    function toggleNav() {
-      const nl = document.getElementById('navLinks');
-      nl.classList.toggle('open');
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      const nl = document.getElementById('navLinks');
-      if (nl) nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nl.classList.remove('open')));
-    });
+    // FODELSEDAG-NOTIS
+    (function() {
+      const BDAYS = [
+        { names:['Peter','Isak'], date:'06-22', emoji:'🎂' },
+        { names:['Carina'],       date:'04-16', emoji:'🎂' },
+        { names:['Elias'],        date:'06-07', emoji:'🎂' },
+        { names:['Mattias'],      date:'06-26', emoji:'🎂' },
+        { names:['Tora'],         date:'10-21', emoji:'🎂' },
+        { names:['Jenna'],        date:'02-06', emoji:'🎂' },
+        { names:['Alva'],         date:'12-03', emoji:'🎂' },
+        { names:['Svea'],         date:'12-04', emoji:'🎂' },
+        { names:['Signe'],        date:'05-04', emoji:'🎂' },
+        { names:['Benke'],        date:'11-24', emoji:'🎂' },
+      ];
+      const today = new Date();
+      const yr = today.getFullYear();
+      const upcoming = [];
+      BDAYS.forEach(b => {
+        const [bm, bd] = b.date.split('-').map(Number);
+        let bDate = new Date(yr, bm - 1, bd);
+        if (bDate < today) bDate = new Date(yr + 1, bm - 1, bd);
+        const diff = Math.ceil((bDate - today) / (1000 * 60 * 60 * 24));
+        if (diff <= 7) upcoming.push({ names: b.names, diff, emoji: b.emoji });
+      });
+      if (upcoming.length) {
+        const bar = document.getElementById('bdayBar');
+        bar.style.display = 'flex';
+        upcoming.forEach(u => {
+          const chip = document.createElement('span');
+          chip.className = 'bday-chip';
+          const who = u.names.join(' & ');
+          const when = u.diff === 0 ? 'idag!' : 'om ' + u.diff + ' dag' + (u.diff > 1 ? 'ar' : '') + '!';
+          chip.innerHTML = u.emoji + ' ' + who + ' fyller år ' + when + ' <a href="fodelsedagar.html">Se mer</a>';
+          bar.appendChild(chip);
+        });
+      }
+    })();
 
-    async function logOut() {
-      await sb.auth.signOut();
-      window.location.href = 'login.html';
-    }
-  </script>
-</body>
-</html>
+    // VALKOMSTNAMN
+    sb.auth.getSession().then(({ data }) => {
+      if (data?.session?.user) {
+        const nameMap = {
+          'pealmab@hotmail.com':           'Peter',
+          'toraalmstrom96@hotmail.com':    'Tora',
+          'alvaalmstrom@hotmail.com':      'Alva',
+          'carina_almstrom@hotmail.com':   'Carina',
+          'elias.almstrom@hotmail.com':    'Elias',
+          'mattias.rutkowski@ahoo.se':     'Mattias',
+          'bengthirvonen@hotmail.com':     'Benke',
+     

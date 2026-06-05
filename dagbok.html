@@ -453,7 +453,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-brand" href="index.html">🌲 Familjen Hägg</a>
+    <a class="nav-brand" href="index.html">🌲 Familjesajten</a>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Meny">&#9776;</button>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Hem</a>
@@ -547,7 +547,7 @@
   </div>
 
   <footer>
-    <p>Familjen Hägg &nbsp;·&nbsp; Dagbok &nbsp;·&nbsp; 2025</p>
+    <p>Familjen Almström &nbsp;·&nbsp; Dagbok &nbsp;·&nbsp; 2025</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -574,8 +574,8 @@ function addPrivateNavLinks(email) {
 </script>
   <script>
     /* ─── KONFIGURATION ─── */
-    const SUPABASE_URL  = 'https://sijidjdonknlxqqljvte.supabase.co';
-    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNpamlkamRvbmtubHhxcWxqdnRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0Mzk5MDMsImV4cCI6MjA5NjAxNTkwM30.ylWEtSJ3xx5gCYkle8o1N-90MoBr1KscWmSwzPnJ2x4';
+    const SUPABASE_URL  = 'https://evwveklsntnfmsblpcgf.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2d3Zla2xzbnRuZm1zYmxwY2dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MTI2MzgsImV4cCI6MjA5NjE4ODYzOH0.KXbe5Ji6M5dr_43NUAvI-RjWWRtvie2tVortExpNaDY';
     const CLOUDINARY_CLOUD  = 'dnl6r7axn';
     const CLOUDINARY_PRESET = 'family_porta';
 
@@ -793,15 +793,37 @@ function addPrivateNavLinks(email) {
         ${e.text ? `<div class="entry-text">${escHtml(e.text)}</div>` : ''}
         ${photosHtml}
         <div class="entry-reactions">
-          <button class="reaction-btn" onclick="react(${e.id}, 'heart', this)">
+          <button class="reaction-btn" onclick="react('${e.id}', 'heart', this)">
             ❤️ <span class="count">${e.reactions_heart || 0}</span>
           </button>
-          <button class="reaction-btn" onclick="react(${e.id}, 'smile', this)">
+          <button class="reaction-btn" onclick="react('${e.id}', 'smile', this)">
             😄 <span class="count">${e.reactions_smile || 0}</span>
           </button>
+          <button class="reaction-btn" onclick="deleteEntry('${e.id}', this)" style="margin-left:auto;color:#b83030;" title="Ta bort">🗑️</button>
+          <button class="reaction-btn" onclick="editEntry('${e.id}', this)" style="color:#3D5C3A;" title="Redigera">✏️</button>
         </div>
       `;
       return card;
+    }
+
+    async function deleteEntry(id, btn) {
+      if (!confirm('Ta bort det här inlägget?')) return;
+      btn.disabled = true;
+      const { error } = await sb.from('memories').delete().eq('id', id);
+      if (error) { alert('Kunde inte ta bort: ' + error.message); btn.disabled = false; return; }
+      const card = document.querySelector(`.entry-card[data-id="${id}"]`);
+      if (card) card.remove();
+    }
+
+    async function editEntry(id, btn) {
+      const card = document.querySelector(`.entry-card[data-id="${id}"]`);
+      const textEl = card.querySelector('.entry-text');
+      const currentText = textEl ? textEl.textContent : '';
+      const newText = prompt('Redigera inlägg:', currentText);
+      if (newText === null) return;
+      const { error } = await sb.from('memories').update({ text: newText }).eq('id', id);
+      if (error) { alert('Kunde inte spara: ' + error.message); return; }
+      if (textEl) textEl.textContent = newText;
     }
 
     function escHtml(str) {
@@ -848,6 +870,9 @@ function addPrivateNavLinks(email) {
         .subscribe();
     }
 
+    let CURRENT_USER_EMAIL = '';
+    const ADMIN_EMAIL = 'pealmab@hotmail.com';
+
     /* ─── INIT ─── */
     async function init() {
       const { data } = await sb.auth.getSession();
@@ -855,7 +880,8 @@ function addPrivateNavLinks(email) {
         window.location.href = 'login.html';
         return;
       }
-      addPrivateNavLinks(data.session.user.email.toLowerCase());
+      CURRENT_USER_EMAIL = data.session.user.email.toLowerCase();
+      addPrivateNavLinks(CURRENT_USER_EMAIL);
       buildAuthorRow();
       await loadEntries();
       subscribeRealtime();
@@ -882,11 +908,11 @@ function addPrivateNavLinks(email) {
       setInterval(function(){
         if(!stored) return;
         fetch("version.json?t=" + Date.now()).then(function(r){return r.json();}).then(function(d){
-          if(d.version !== stored </body></body> !document.getElementById("update-banner")){
+          if(d.version !== stored && !document.getElementById("update-banner")){
             var b = document.createElement("div");
             b.id = "update-banner";
             b.style.cssText = "position:fixed;bottom:0;left:0;right:0;background:#3d5c3a;color:#f5f0e8;text-align:center;padding:0.75rem 1rem;z-index:9999;font-family:Jost,sans-serif;font-size:0.9rem;display:flex;align-items:center;justify-content:center;gap:1rem;box-shadow:0 -2px 12px rgba(0,0,0,0.2);";
-            b.innerHTML = "✨ Sajten har uppdaterats! <button onclick="location.reload(true)" style="background:#fff;color:#3d5c3a;border:none;padding:0.35rem 0.9rem;border-radius:6px;cursor:pointer;font-weight:600;font-family:Jost,sans-serif;">Ladda om</button>";
+            b.innerHTML = "✨ Sajten har uppdaterats! <button onclick='location.reload(true)' style='background:#fff;color:#3d5c3a;border:none;padding:0.35rem 0.9rem;border-radius:6px;cursor:pointer;font-weight:600;font-family:Jost,sans-serif;'>Ladda om</button>";
             document.body.appendChild(b);
           }
         }).catch(function(){});

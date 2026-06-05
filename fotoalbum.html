@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fotoalbum — Familjen Hägg</title>
+  <title>Fotoalbum — Familjen Almström Demervik Rutkowski Hirvonen</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -131,7 +131,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-brand" href="index.html">🌲 Familjen Hägg</a>
+    <a class="nav-brand" href="index.html">🌲 Familjesajten</a>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Meny">&#9776;</button>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Hem</a>
@@ -252,7 +252,7 @@
   </div>
 
   <footer>
-    <p>Familjen Hägg &nbsp;·&nbsp; Privat familjesajt &nbsp;·&nbsp; 2025</p>
+    <p>Familjen Almström Demervik Rutkowski Hirvonen &nbsp;·&nbsp; Privat familjesajt &nbsp;·&nbsp; 2025</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -278,8 +278,8 @@ function addPrivateNavLinks(email) {
     }
 </script>
   <script>
-    const SUPABASE_URL  = 'https://sijidjdonknlxqqljvte.supabase.co';
-    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNpamlkamRvbmtubHhxcWxqdnRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0Mzk5MDMsImV4cCI6MjA5NjAxNTkwM30.ylWEtSJ3xx5gCYkle8o1N-90MoBr1KscWmSwzPnJ2x4';
+    const SUPABASE_URL  = 'https://evwveklsntnfmsblpcgf.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2d3Zla2xzbnRuZm1zYmxwY2dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MTI2MzgsImV4cCI6MjA5NjE4ODYzOH0.KXbe5Ji6M5dr_43NUAvI-RjWWRtvie2tVortExpNaDY';
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
     let currentUser = null;
@@ -303,7 +303,9 @@ function addPrivateNavLinks(email) {
       allPhotos = data || [];
       // Extract unique albums
       const unique = [...new Set(allPhotos.map(p => p.album).filter(Boolean))];
-      albums = ['Övrigt', ...unique.filter(a => a !== 'Övrigt')];
+      const extraAlbums = JSON.parse(localStorage.getItem('extra_albums') || '[]');
+      const all = [...new Set([...unique, ...extraAlbums])];
+      albums = ['Övrigt', ...all.filter(a => a !== 'Övrigt')];
       renderAlbumTabs();
       renderPhotos();
     }
@@ -462,7 +464,12 @@ function addPrivateNavLinks(email) {
     document.getElementById('btnSaveAlbum').onclick = () => {
       const name = document.getElementById('fAlbumName').value.trim();
       if (!name) { alert('Ange ett albumnamn!'); return; }
-      if (!albums.includes(name)) { albums.push(name); renderAlbumTabs(); }
+      if (!albums.includes(name)) {
+        albums.push(name);
+        const saved = JSON.parse(localStorage.getItem('extra_albums') || '[]');
+        if (!saved.includes(name)) { saved.push(name); localStorage.setItem('extra_albums', JSON.stringify(saved)); }
+        renderAlbumTabs();
+      }
       document.getElementById('albumModal').classList.remove('open');
       document.getElementById('fAlbumName').value = '';
     };
@@ -486,11 +493,11 @@ function addPrivateNavLinks(email) {
       setInterval(function(){
         if(!stored) return;
         fetch("version.json?t=" + Date.now()).then(function(r){return r.json();}).then(function(d){
-          if(d.version !== stored </body></body> !document.getElementById("update-banner")){
+          if(d.version !== stored && !document.getElementById("update-banner")){
             var b = document.createElement("div");
             b.id = "update-banner";
             b.style.cssText = "position:fixed;bottom:0;left:0;right:0;background:#3d5c3a;color:#f5f0e8;text-align:center;padding:0.75rem 1rem;z-index:9999;font-family:Jost,sans-serif;font-size:0.9rem;display:flex;align-items:center;justify-content:center;gap:1rem;box-shadow:0 -2px 12px rgba(0,0,0,0.2);";
-            b.innerHTML = "✨ Sajten har uppdaterats! <button onclick="location.reload(true)" style="background:#fff;color:#3d5c3a;border:none;padding:0.35rem 0.9rem;border-radius:6px;cursor:pointer;font-weight:600;font-family:Jost,sans-serif;">Ladda om</button>";
+            b.innerHTML = "✨ Sajten har uppdaterats! <button onclick='location.reload(true)' style='background:#fff;color:#3d5c3a;border:none;padding:0.35rem 0.9rem;border-radius:6px;cursor:pointer;font-weight:600;font-family:Jost,sans-serif;'>Ladda om</button>";
             document.body.appendChild(b);
           }
         }).catch(function(){});
