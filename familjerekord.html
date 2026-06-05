@@ -360,17 +360,15 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-icons">🎬🌍🎣🗑️😇</div>
+  <div class="hero-icons">🎣🗑️😇</div>
   <h1>Familjerekord</h1>
-  <p>Film · Resor · Fiske · Sophantering · Tålamod</p>
+  <p>Fiske · Sophantering · Tålamod</p>
 </div>
 
 <!-- TAB BAR -->
 <div class="tab-bar">
-  <button class="tab-btn" onclick="showTab('resor')" id="tab-resor" class="tab-btn active">
-    <span class="tab-emoji">🌍</span> Resor
-  </button>
-  <button class="tab-btn" onclick="showTab('fiske')" id="tab-fiske">
+
+  <button class="tab-btn active" onclick="showTab('fiske')" id="tab-fiske">
     <span class="tab-emoji">🎣</span> Fiske
   </button>
   <button class="tab-btn" onclick="showTab('sopor')" id="tab-sopor">
@@ -382,22 +380,8 @@
 </div>
 
 
-<!-- ══════════ RESOR ══════════ -->
-<section id="sec-resor" class="section active">
-  <div class="section-header">
-    <div class="section-title">
-      <small>Familjeäventyr</small>
-      Resor
-    </div>
-    <button class="btn-add" onclick="openModal('modal-resa')">+ Lägg till resa</button>
-  </div>
-  <div class="book-grid" id="resor-grid">
-    <div class="empty"><div class="empty-icon">🌍</div><p>Inga resor registrerade ännu.<br>Var börjar äventyret?</p></div>
-  </div>
-</section>
-
 <!-- ══════════ FISKE ══════════ -->
-<section id="sec-fiske" class="section">
+<section id="sec-fiske" class="section active">
   <div class="section-header">
     <div class="section-title">
       <small>Bästa fångsten</small>
@@ -729,48 +713,7 @@ function setResaStar(n) {
 
 
 
-/* ════ RESOR ════ */
-async function loadResor() {
-  const { data } = await sb.from('resor').select('*').order('ar', { ascending: false });
-  const grid = document.getElementById('resor-grid');
-  if (!data || !data.length) {
-    grid.innerHTML = '<div class="empty"><div class="empty-icon">🌍</div><p>Inga resor registrerade ännu.<br>Var börjar äventyret?</p></div>';
-    return;
-  }
-  grid.innerHTML = data.map(r => `
-    <div class="book-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.4rem;">
-        ${r.land ? `<span style="font-size:0.7rem;background:var(--sand);padding:0.15rem 0.5rem;border-radius:20px;color:rgba(28,24,16,0.55);">📍 ${esc(r.land)}</span>` : '<span></span>'}
-        ${r.ar ? `<span style="font-size:0.7rem;color:rgba(28,24,16,0.4);">${r.ar}</span>` : ''}
-      </div>
-      <div class="book-title">${esc(r.destination)}</div>
-      ${r.resenarer ? `<div class="book-author">👥 ${esc(r.resenarer)}</div>` : ''}
-      <div class="book-stars" style="color:var(--gold)">${'★'.repeat(r.betyg||0)}${'☆'.repeat(5-(r.betyg||0))}</div>
-      ${r.beskrivning ? `<div class="book-review">${esc(r.beskrivning)}</div>` : ''}
-    </div>
-  `).join('');
-}
 
-async function saveResa() {
-  const destination = document.getElementById('resa-destination').value.trim();
-  if (!destination) { toast('Ange en destination!'); return; }
-  const ar = document.getElementById('resa-ar').value ? parseInt(document.getElementById('resa-ar').value) : null;
-  const { error } = await sb.from('resor').insert({
-    destination,
-    land: document.getElementById('resa-land').value.trim(),
-    ar,
-    betyg: resaBetyg || null,
-    beskrivning: document.getElementById('resa-beskrivning').value.trim(),
-    resenarer: document.getElementById('resa-resenarer').value.trim()
-  });
-  if (error) { toast('Fel: ' + error.message); return; }
-  closeModal('modal-resa');
-  toast('🌍 Resa sparad!');
-  resaBetyg = 0;
-  document.querySelectorAll('#resa-stjarnor span').forEach(s => s.classList.remove('active'));
-  ['resa-destination','resa-land','resa-ar','resa-beskrivning','resa-resenarer'].forEach(id => document.getElementById(id).value = '');
-  loadResor();
-}
 
 /* ════ FISKE ════ */
 async function loadFiske() {
@@ -953,7 +896,6 @@ function formatDate(ts) {
 }
 
 function loadAll() {
-  loadResor();
   loadFiske();
   loadSopor();
   loadTalamod();
