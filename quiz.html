@@ -277,8 +277,8 @@
           <label>Vem sa det?</label>
           <select id="newSvarare">
             <option value="">— välj person —</option>
-            <option>Peter</option><option>Carina</option><option>Elias</option>
-            <option>Tora</option><option>Mattias</option><option>Alva</option><option>Isak</option>
+            <option>Familjemedlem 1</option><option>Familjemedlem 2</option><option>Familjemedlem 3</option>
+            <option>Familjemedlem 4</option><option>Familjemedlem 5</option><option>Familjemedlem 6</option><option>Familjemedlem 7</option>
           </select>
         </div>
         <button class="btn-add-quote" onclick="addCitat()">Lägg till</button>
@@ -316,10 +316,10 @@ function addPrivateNavLinks(email) {
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
     const MEMBERS = [
-      { name:'Peter',emoji:'👨' },{ name:'Carina',emoji:'👩' },
-      { name:'Elias',emoji:'🧑' },{ name:'Tora',emoji:'👧' },
-      { name:'Mattias',emoji:'🧔' },{ name:'Alva',emoji:'👱‍♀️' },
-      { name:'Isak',emoji:'🧑‍🦱' },{ name:'Benke',emoji:'🦌' },
+      { name:'Familjemedlem 1',emoji:'👨' },{ name:'Familjemedlem 2',emoji:'👩' },
+      { name:'Familjemedlem 3',emoji:'🧑' },{ name:'Familjemedlem 4',emoji:'👧' },
+      { name:'Familjemedlem 5',emoji:'🧔' },{ name:'Familjemedlem 6',emoji:'👱‍♀️' },
+      { name:'Familjemedlem 7',emoji:'🧑‍🦱' },{ name:'Familjemedlem 8',emoji:'🦌' },
     ];
     const RESULT_MSGS = [
       [0,2, '😅 Håll ut, du lär känna familjen bättre för varje runda!'],
