@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Familjerekord — Almström</title>
+  <title>Familjerekord — Familjesajten</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -651,14 +651,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
     function addPrivateNavLinks(email) {
-      const PETER = 'pealmab@hotmail.com';
       const links = [];
-      if (email === PETER || email === 'toraalmstrom96@hotmail.com') links.push({ href: 'peter-tora.html', label: 'Tora & Peter 🌲' });
-      if (email === PETER || email === 'alvaalmstrom@hotmail.com')   links.push({ href: 'peter-alva.html', label: 'Alva & Peter 🌺' });
-      if (email === PETER || email === 'elias.almstrom@hotmail.com') links.push({ href: 'peter-elias.html', label: 'Elias & Peter 🎮' });
-      if (email === 'toraalmstrom96@hotmail.com')                    links.push({ href: 'toras-album.html', label: 'Jennas album 🌸' });
-      if (email === 'alvaalmstrom@hotmail.com')                      links.push({ href: 'alvas-album.html', label: 'Svea & Signe 🌼' });
-      if (email === PETER) links.push({ href: 'admin.html', label: 'Adminpanel ⚙️' });
+      // Privata mappar konfigureras av familjen själva
       if (!links.length) return;
       const navRight = document.querySelector('.nav-right');
       if (!navRight) return;

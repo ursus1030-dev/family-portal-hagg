@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stamtavla — Familjen Almström</title>
+  <title>Stamtavla — Din familjesajt</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -582,20 +582,14 @@
   </div>
 
   <footer>
-    <p>Familjen Almström &nbsp;·&nbsp; Stamtavla &nbsp;·&nbsp; 2025</p>
+    <p>Din familjesajt &nbsp;·&nbsp; Stamtavla &nbsp;·&nbsp; 2025</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 function addPrivateNavLinks(email) {
-      const PETER = 'pealmab@hotmail.com';
       const links = [];
-      if (email === PETER || email === 'toraalmstrom96@hotmail.com') links.push({ href: 'peter-tora.html', label: 'Tora & Peter 🌲' });
-      if (email === PETER || email === 'alvaalmstrom@hotmail.com')   links.push({ href: 'peter-alva.html', label: 'Alva & Peter 🌺' });
-      if (email === PETER || email === 'elias.almstrom@hotmail.com') links.push({ href: 'peter-elias.html', label: 'Elias & Peter 🎮' });
-      if (email === 'toraalmstrom96@hotmail.com')                    links.push({ href: 'toras-album.html', label: 'Jennas album 🌸' });
-      if (email === 'alvaalmstrom@hotmail.com')                      links.push({ href: 'alvas-album.html', label: 'Svea & Signe 🌼' });
-      if (email === PETER) links.push({ href: 'admin.html', label: 'Adminpanel ⚙️' });
+      // Privata mappar konfigureras av familjen själva
       if (!links.length) return;
       const navRight = document.querySelector('.nav-right');
       if (!navRight) return;
@@ -621,7 +615,7 @@ function addPrivateNavLinks(email) {
         facts: [
           { label: 'Ålder', val: '52 år' },
           { label: 'Roll', val: 'Admin' },
-          { label: 'E-post', val: 'pealmab@hotmail.com' },
+          { label: 'E-post', val: '' },
           { label: 'Husdjur', val: '🐕 Tyce (Leonberger, 3 år)' },
           { label: 'Lösenord', val: 'Familjen2026' },
         ]
@@ -703,7 +697,7 @@ function addPrivateNavLinks(email) {
       },
       svea: {
         initials: 'Sv', avClass: 'av-toddler',
-        name: 'Svea Almström Demervik', role: 'Barnbarn · Storasyster',
+        name: 'Svea', role: 'Barnbarn · Storasyster',
         emoji: '🌼',
         facts: [
           { label: 'Ålder', val: '2,5 år' },
@@ -714,7 +708,7 @@ function addPrivateNavLinks(email) {
       },
       sigrid: {
         initials: '👶', avClass: 'av-baby',
-        name: 'Sigrid Almström Demervik', role: 'Barnbarn · Nyfödd',
+        name: 'Sigrid', role: 'Barnbarn · Nyfödd',
         emoji: '🍼',
         facts: [
           { label: 'Ålder', val: '3 veckor' },
