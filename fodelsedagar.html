@@ -239,7 +239,7 @@
     startFX(_minDays);
 
     sb.auth.getSession().then(({ data }) => {
-      if (!data?.session) { window.location.href = 'login.html'; return; }
+      if (!data?.session) { window.location.href = 'login.html?logout=1'; return; }
       addPrivateNavLinks(data.session.user.email.toLowerCase());
       renderBirthdays();
     });
@@ -259,7 +259,7 @@
         document.addEventListener('click', () => wrap.classList.remove('open'));
       }
     }
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
     function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
 
     // Födelsedagdata — samkör Peter & Isak (samma dag)

@@ -228,12 +228,12 @@ function addPrivateNavLinks(email) {
     const likedWords = new Set(JSON.parse(localStorage.getItem('likedWords')||'[]'));
 
     sb.auth.getSession().then(({ data }) => {
-      if (!data?.session) { window.location.href = 'login.html'; return; }
+      if (!data?.session) { window.location.href = 'login.html?logout=1'; return; }
       addPrivateNavLinks((data.session||data?.session).user.email.toLowerCase());
       buildAlphaNav();
       loadWords();
     });
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
 
     async function loadWords() {
       const { data } = await sb.from('dialekt_ord').select('*').order('ord', { ascending: true });

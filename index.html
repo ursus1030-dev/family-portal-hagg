@@ -907,18 +907,18 @@
     // Fånga PASSWORD_RECOVERY-event (om hash-check ovan missades pga cache)
     sb.auth.onAuthStateChange((event) => {
       if (event === 'PASSWORD_RECOVERY') {
-        window.location.href = 'login.html';
+        window.location.href = 'login.html?logout=1';
       }
     });
 
     // Kolla session – om inte inloggad → login
     sb.auth.getSession().then(({ data }) => {
-      if (!data?.session) { window.location.href = 'login.html'; return; }
+      if (!data?.session) { window.location.href = 'login.html?logout=1'; return; }
       addPrivateNavLinks(data.session.user.email.toLowerCase());
     });
 
 
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
 
     function toggleNav() {
       const nl = document.getElementById('navLinks');

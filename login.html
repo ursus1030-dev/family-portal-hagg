@@ -469,9 +469,12 @@
         return;
       }
 
-      // Redan inloggad?
-      const { data } = await sb.auth.getSession();
-      if (data?.session) window.location.href = 'index.html';
+      // Redan inloggad? (hoppa över om man precis loggat ut)
+      const _justLoggedOut = new URLSearchParams(window.location.search).get('logout');
+      if (!_justLoggedOut) {
+        const { data } = await sb.auth.getSession();
+        if (data?.session) window.location.href = 'index.html';
+      }
     })();
 
     async function doReset() {

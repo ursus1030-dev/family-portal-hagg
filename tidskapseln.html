@@ -240,14 +240,14 @@ function addPrivateNavLinks(email) {
     let allCapsules = [];
 
     sb.auth.getSession().then(({ data }) => {
-      if (!data?.session) { window.location.href = 'login.html'; return; }
+      if (!data?.session) { window.location.href = 'login.html?logout=1'; return; }
       addPrivateNavLinks((data.session||data?.session).user.email.toLowerCase());
       // Default open date: 1 year from now
       const d = new Date(); d.setFullYear(d.getFullYear()+1);
       document.getElementById('capOpenDate').value = d.toISOString().split('T')[0];
       loadCapsules();
     });
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
 
     function switchTab(id, btn) {
       document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));

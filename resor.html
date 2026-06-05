@@ -201,13 +201,13 @@
   let allTrips = [];
 
   sb.auth.getSession().then(({ data }) => {
-    if (!data.session) { window.location.href = 'login.html'; return; }
+    if (!data.session) { window.location.href = 'login.html?logout=1'; return; }
     currentUser = data.session.user;
     addPrivateNavLinks(currentUser.email.toLowerCase());
     loadTrips();
   });
 
-  async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+  async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
 
   async function loadTrips() {
     const { data } = await sb.from('resor').select('*').order('created_at', { ascending: false });

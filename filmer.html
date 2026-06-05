@@ -200,13 +200,13 @@
   let allFilms = [];
 
   sb.auth.getSession().then(({ data }) => {
-    if (!data.session) { window.location.href = 'login.html'; return; }
+    if (!data.session) { window.location.href = 'login.html?logout=1'; return; }
     currentUser = data.session.user;
     addPrivateNavLinks(currentUser.email.toLowerCase());
     loadFilms();
   });
 
-  async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+  async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
 
   async function loadFilms() {
     const { data } = await sb.from('filmer').select('*').order('created_at', { ascending: false });

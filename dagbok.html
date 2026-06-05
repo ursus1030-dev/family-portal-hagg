@@ -850,7 +850,7 @@ function addPrivateNavLinks(email) {
     /* ─── LOGOUT ─── */
     async function logOut() {
       await sb.auth.signOut();
-      window.location.href = 'login.html';
+      window.location.href = 'login.html?logout=1';
     }
 
     /* ─── REALTID ─── */
@@ -871,7 +871,7 @@ function addPrivateNavLinks(email) {
     async function init() {
       const { data } = await sb.auth.getSession();
       if (!data?.session) {
-        window.location.href = 'login.html';
+        window.location.href = 'login.html?logout=1';
         return;
       }
       CURRENT_USER_EMAIL = data.session.user.email.toLowerCase();

@@ -656,14 +656,14 @@ const sb = supabase.createClient(SUPA_URL, SUPA_ANON);
 /* ── Auth guard ── */
 (async () => {
   const { data: { session } } = await sb.auth.getSession();
-  if (!session) { window.location.href = 'login.html'; return; }
+  if (!session) { window.location.href = 'login.html?logout=1'; return; }
   addPrivateNavLinks(session.user.email.toLowerCase());
   loadAll();
 })();
 
 async function logOut() {
   await sb.auth.signOut();
-  window.location.href = 'login.html';
+  window.location.href = 'login.html?logout=1';
 }
 
 /* ── Tab switching ── */

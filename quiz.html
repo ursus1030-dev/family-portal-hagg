@@ -338,11 +338,11 @@ function addPrivateNavLinks(email) {
 
     // ── AUTH ──
     sb.auth.getSession().then(({ data }) => {
-      if (!data?.session) { window.location.href = 'login.html'; return; }
+      if (!data?.session) { window.location.href = 'login.html?logout=1'; return; }
       addPrivateNavLinks((data.session||data?.session).user.email.toLowerCase());
       init();
     });
-    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
+    async function logOut() { await sb.auth.signOut(); window.location.href = 'login.html?logout=1'; }
 
     async function init() {
       buildPlayerChips();
