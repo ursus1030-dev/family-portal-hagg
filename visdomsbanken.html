@@ -316,7 +316,10 @@ function addPrivateNavLinks(email) {
           <div class="q-meta">Ställd ${dateStr} &nbsp;·&nbsp; ${answers.length} svar</div>
         </div>
         ${answersHtml}
-        <button class="toggle-reply" onclick="toggleReply('${q.id}')">✏️ Svara anonymt</button>
+        <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.3rem;">
+          <button class="toggle-reply" onclick="toggleReply('${q.id}')">✏️ Svara anonymt</button>
+          <button onclick="deleteQuestion('${q.id}')" style="background:none;border:1px solid rgba(168,76,42,0.25);border-radius:6px;padding:0.35rem 0.8rem;font-size:0.78rem;color:rgba(168,76,42,0.7);cursor:pointer;">🗑 Ta bort fråga</button>
+        </div>
         <div class="reply-section hidden" id="reply-${q.id}">
           <textarea class="reply-textarea" id="rtxt-${q.id}" placeholder="Skriv ditt svar — visas anonymt för hela familjen…"></textarea>
           <div class="emoji-row" id="epicker-${q.id}">${emojiPickerHtml}</div>
@@ -326,6 +329,15 @@ function addPrivateNavLinks(email) {
         </div>
       `;
       return card;
+    }
+
+    /* ── TA BORT FRÅGA ── */
+    async function deleteQuestion(id) {
+      if (!confirm('Ta bort frågan och alla svar?')) return;
+      await sb.from('visdom_answers').delete().eq('question_id', id);
+      const { error } = await sb.from('visdom_questions').delete().eq('id', id);
+      if (error) { alert('Fel: ' + error.message); return; }
+      document.getElementById('qcard-' + id)?.remove();
     }
 
     /* ── SVARA ── */

@@ -760,8 +760,19 @@ async function loadFiske() {
         ${f.datum ? `<span>📅 ${f.datum}</span>` : ''}
       </div>
       ${f.notering ? `<div style="margin-top:0.6rem;font-size:0.82rem;font-style:italic;color:rgba(28,24,16,0.55);">"${esc(f.notering)}"</div>` : ''}
+      <div style="text-align:right;margin-top:0.6rem;">
+        <button onclick="deleteFisk('${f.id}')" style="background:none;border:1px solid rgba(168,76,42,0.25);border-radius:6px;padding:0.2rem 0.6rem;font-size:0.75rem;color:rgba(168,76,42,0.7);cursor:pointer;" title="Ta bort">🗑 Ta bort</button>
+      </div>
     </div>
   `).join('');
+}
+
+async function deleteFisk(id) {
+  if (!confirm('Ta bort denna fångst?')) return;
+  const { error } = await sb.from('fiskerekord').delete().eq('id', id);
+  if (error) { toast('Fel: ' + error.message); return; }
+  toast('Fångst borttagen.');
+  loadFiske();
 }
 
 async function saveFisk() {
@@ -864,9 +875,20 @@ async function loadTalamod() {
         <div class="lb-name">${esc(r.person)}</div>
         ${r.berattelse ? `<div class="lb-detail">"${esc(r.berattelse)}"</div>` : ''}
       </div>
-      <div style="font-size:0.75rem;color:rgba(28,24,16,0.4);flex-shrink:0;">${formatDate(r.created_at)}</div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.3rem;flex-shrink:0;">
+        <div style="font-size:0.75rem;color:rgba(28,24,16,0.4);">${formatDate(r.created_at)}</div>
+        <button onclick="deleteTalamod('${r.id}')" style="background:none;border:1px solid rgba(168,76,42,0.25);border-radius:6px;padding:0.15rem 0.5rem;font-size:0.7rem;color:rgba(168,76,42,0.7);cursor:pointer;">🗑</button>
+      </div>
     </div>
   `).join('');
+}
+
+async function deleteTalamod(id) {
+  if (!confirm('Ta bort denna händelse?')) return;
+  const { error } = await sb.from('talamod').delete().eq('id', id);
+  if (error) { toast('Fel: ' + error.message); return; }
+  toast('Borttagen.');
+  loadTalamod();
 }
 
 async function saveTalamod(typ) {
