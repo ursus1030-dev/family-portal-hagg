@@ -282,7 +282,8 @@ function addPrivateNavLinks(email) {
 
     let currentUser = null;
     let allPhotos = [];
-    let albums = ['Övrigt'];
+    const DEFAULT_ALBUMS = ['Semester', 'Högtider', 'Vardag'];
+    let albums = ['Övrigt', ...DEFAULT_ALBUMS];
     let activeAlbum = 'alla';
     let lbIndex = 0;
     let selectedFiles = [];
@@ -302,7 +303,7 @@ function addPrivateNavLinks(email) {
       // Extract unique albums
       const unique = [...new Set(allPhotos.map(p => p.album).filter(Boolean))];
       const extraAlbums = JSON.parse(localStorage.getItem('extra_albums') || '[]');
-      const all = [...new Set([...unique, ...extraAlbums])];
+      const all = [...new Set([...DEFAULT_ALBUMS, ...unique, ...extraAlbums])];
       albums = ['Övrigt', ...all.filter(a => a !== 'Övrigt')];
       renderAlbumTabs();
       renderPhotos();
