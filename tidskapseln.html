@@ -272,7 +272,7 @@ function addPrivateNavLinks(email) {
       }
 
       container.innerHTML = allCapsules.map(c => {
-        const openDate = new Date(c.open_date);
+        const openDate = new Date(String(c.open_date).slice(0,10) + 'T00:00:00');
         const canOpen  = openDate <= today;
         const emoji    = MEMBER_EMOJIS[c.author_name] || '✉️';
         const dateStr  = openDate.toLocaleDateString('sv-SE', { year:'numeric', month:'long', day:'numeric' });
